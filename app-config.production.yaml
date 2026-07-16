@@ -29,6 +29,8 @@ auth:
             - resolver: emailMatchingUserEntityProfileEmail
 
 catalog:
+  rules:
+    - allow: [Component, System, API, Resource, Location, User, Group]
   locations:
     - type: file
       target: ./catalog/org.yaml
