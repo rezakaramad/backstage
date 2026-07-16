@@ -1,0 +1,14 @@
+---
+# Platform admin user
+# spec.profile.email must match exactly what Microsoft Entra returns.
+# For guest accounts this is: realname_domain.com#EXT#@tenant.onmicrosoft.com
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: r-karamad
+  namespace: default
+spec:
+  profile:
+    displayName: Reza Karamad
+    email: r.karamad_gmail.com#EXT#@rkaramadgmail.onmicrosoft.com
+  memberOf: []
