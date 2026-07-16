@@ -3,7 +3,6 @@ app:
 
 backend:
   baseUrl: ${APP_BASE_URL}
-  listen: ':7007'
 
   # config options: https://node-postgres.com/apis/client
   database:
