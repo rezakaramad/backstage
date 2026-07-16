@@ -34,5 +34,3 @@ catalog:
       target: ./catalog/org.yaml
       rules:
         - allow: [User, Group]
-      rules:
-        - allow: [User, Group]
