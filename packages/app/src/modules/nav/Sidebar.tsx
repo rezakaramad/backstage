@@ -11,8 +11,21 @@ import { SidebarLogo } from './SidebarLogo';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { SidebarSearchModal } from '@backstage/plugin-search';
-import { UserSettingsSignInAvatar, SidebarSignOutButton } from '@backstage/plugin-user-settings';
+import { UserSettingsSignInAvatar } from '@backstage/plugin-user-settings';
 import { NotificationsSidebarItem } from '@backstage/plugin-notifications';
+import { useApi, identityApiRef } from '@backstage/core-plugin-api';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
+const SignOutItem = () => {
+  const identityApi = useApi(identityApiRef);
+  return (
+    <SidebarItem
+      icon={ExitToAppIcon}
+      text="Log out"
+      onClick={() => identityApi.signOut()}
+    />
+  );
+};
 
 export const SidebarContent = NavContentBlueprint.make({
   params: {
@@ -51,7 +64,7 @@ export const SidebarContent = NavContentBlueprint.make({
           >
             {nav.take('page:app-visualizer')}
             {nav.take('page:user-settings')}
-            <SidebarSignOutButton />
+            <SignOutItem />
           </SidebarGroup>
         </Sidebar>
       );
