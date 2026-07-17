@@ -22,13 +22,13 @@ using the [new frontend & backend system](https://backstage.io/docs/frontend-sys
 
 ```
 backstage/
-├── app-config.yaml              # Base config — used for LOCAL development (guest auth, in-memory DB)
-├── app-config.production.yaml   # Production overrides — real DB, oauth2-proxy auth, msgraph sync
+├── app-config.yaml              # Base confi; used for LOCAL development ([guest auth](./app-config.yaml:#84), [in-memory DB](./app-config.yaml:#40))
+├── app-config.production.yaml   # Production overrides; [real DB (Postgres)](./app-config.production.yaml:#7), [oauth2-proxy auth](./app-config.production.yaml:#15), [msgraph sync](./app-config.production.yaml:#39)
 ├── catalog/
-│   └── org.yaml                 # Static catalog entities (users/groups now come from Entra sync)
+│   └── org.yaml                 # Static catalog entities (users/groups come from Entra sync this customization)
 ├── examples/                    # Sample entities & a demo scaffolder template
 ├── packages/
-│   ├── app/                     # FRONTEND (React) — everything the user sees in the browser
+│   ├── app/                     # FRONTEND (React)
 │   │   └── src/
 │   │       ├── App.tsx          # App entry: registers frontend plugins + sign-in page
 │   │       ├── index.tsx        # ReactDOM bootstrap (rarely touched)
@@ -36,7 +36,7 @@ backstage/
 │   │           └── nav/         # Custom sidebar / navigation
 │   │               ├── Sidebar.tsx   # The left nav bar (menu items, People, Log out)
 │   │               └── SidebarLogo.tsx
-│   └── backend/                 # BACKEND (Node.js) — APIs, catalog, auth, search, etc.
+│   └── backend/                 # BACKEND (Node.js) --> APIs, catalog, auth, search, etc.
 │       ├── src/index.ts         # Backend entry: registers all backend plugins
 │       └── Dockerfile           # Image built & pushed to ghcr.io/rezakaramad/backstage
 └── package.json                 # Yarn 4 workspaces root
@@ -46,10 +46,10 @@ backstage/
 
 | Want to change… | Edit… |
 |---|---|
-| Something visual (UI, sidebar, pages) | `packages/app/src/` |
-| An API, catalog behaviour, auth, search | `packages/backend/src/index.ts` |
+| Something visual (UI, sidebar, pages) | [packages/app/src/](./packages/app/src/) |
+| An API, catalog behaviour, auth, search | [packages/backend/src/index.ts](./packages/backend/src/index.ts) |
 | Runtime config (URLs, DB, auth providers) | `app-config*.yaml` |
-| Which users/groups exist | Nothing — synced from Entra ID |
+| Which users/groups exist | Nothing; synced from Entra ID |
 
 ---
 
@@ -70,8 +70,7 @@ $YARN dev
 ```
 
 Locally, `app-config.yaml` is used: auth is **guest** (no login), and the database
-is **in-memory SQLite** — nothing persists between restarts. This is intentional so
-you can iterate without a cluster.
+is **in-memory SQLite**; nothing persists between restarts.
 
 Other useful commands:
 
