@@ -11,7 +11,7 @@ import { SidebarLogo } from './SidebarLogo';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
 import { SidebarSearchModal } from '@backstage/plugin-search';
-import { UserSettingsSignInAvatar } from '@backstage/plugin-user-settings';
+import { UserSettingsSignInAvatar, SidebarSignOutButton } from '@backstage/plugin-user-settings';
 import { NotificationsSidebarItem } from '@backstage/plugin-notifications';
 
 export const SidebarContent = NavContentBlueprint.make({
@@ -51,6 +51,7 @@ export const SidebarContent = NavContentBlueprint.make({
           >
             {nav.take('page:app-visualizer')}
             {nav.take('page:user-settings')}
+            <SidebarSignOutButton />
           </SidebarGroup>
         </Sidebar>
       );
