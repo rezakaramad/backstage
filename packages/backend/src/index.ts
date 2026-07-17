@@ -25,7 +25,7 @@ backend.add(import('@backstage/plugin-techdocs-backend'));
 
 // auth plugin
 backend.add(import('@backstage/plugin-auth-backend'));
-backend.add(import('@backstage/plugin-auth-backend-module-microsoft-provider'));
+backend.add(import('@backstage/plugin-auth-backend-module-oauth2-proxy-provider'));
 
 // catalog plugin
 backend.add(import('@backstage/plugin-catalog-backend'));

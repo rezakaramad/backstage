@@ -16,17 +16,13 @@ backend:
 auth:
   environment: production
   providers:
-    microsoft:
-      production:
-        clientId: ${AUTH_MICROSOFT_CLIENT_ID}
-        clientSecret: ${AUTH_MICROSOFT_CLIENT_SECRET}
-        tenantId: ${AUTH_MICROSOFT_TENANT_ID}
-        # Reduces login friction for users with multiple tenant accounts
-        domainHint: ${AUTH_MICROSOFT_TENANT_ID}
-        signIn:
-          resolvers:
-            # Match the Entra ID email against spec.profile.email on User entities
-            - resolver: emailMatchingUserEntityProfileEmail
+    # oauth2-proxy handles the full Microsoft OIDC flow at the proxy layer.
+    # Backstage reads the user identity from headers forwarded by the proxy:
+    #   X-Forwarded-Email → matched against spec.profile.email on User entities.
+    oauth2Proxy:
+      signIn:
+        resolvers:
+          - resolver: emailMatchingUserEntityProfileEmail
 
 catalog:
   rules:
