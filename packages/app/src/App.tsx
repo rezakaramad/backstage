@@ -1,5 +1,6 @@
 import { createApp } from '@backstage/frontend-defaults';
 import catalogPlugin from '@backstage/plugin-catalog/alpha';
+import orgPlugin from '@backstage/plugin-org/alpha';
 import { createFrontendModule } from '@backstage/frontend-plugin-api';
 import { SignInPageBlueprint } from '@backstage/plugin-app-react';
 import { navModule } from './modules/nav';
@@ -35,5 +36,5 @@ const signInModule = createFrontendModule({
 });
 
 export default createApp({
-  features: [catalogPlugin, navModule, signInModule],
+  features: [catalogPlugin, orgPlugin, navModule, signInModule],
 });
