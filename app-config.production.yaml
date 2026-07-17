@@ -16,12 +16,15 @@ auth:
   environment: production
   providers:
     # oauth2-proxy handles the full Microsoft OIDC flow at the proxy layer.
-    # Backstage reads the user identity from headers forwarded by the proxy:
-    #   X-Forwarded-Email → matched against spec.profile.email on User entities.
+    # MSGraph syncs users from Entra ID but the 'mail' attribute is often null
+    # for .onmicrosoft.com accounts so spec.profile.email won't be set.
+    # Use the local part of the UPN (e.g. 'reza' from
+    # 'reza@rkaramadgmail.onmicrosoft.com') matched against entity metadata.name
+    # which MSGraph derives from the UPN local part.
     oauth2Proxy:
       signIn:
         resolvers:
-          - resolver: emailMatchingUserEntityProfileEmail
+          - resolver: emailLocalPartMatchingUserEntityName
 
 catalog:
   rules:
