@@ -4,7 +4,6 @@ app:
 backend:
   baseUrl: ${APP_BASE_URL}
 
-  # config options: https://node-postgres.com/apis/client
   database:
     client: pg
     connection:
@@ -32,3 +31,20 @@ catalog:
       target: ./catalog/org.yaml
       rules:
         - allow: [User, Group]
+
+  providers:
+    microsoftGraphOrg:
+      default:
+        tenantId: ${MSGRAPH_TENANT_ID}
+        clientId: ${MSGRAPH_CLIENT_ID}
+        clientSecret: ${MSGRAPH_CLIENT_SECRET}
+        # Sync all users and groups from the tenant.
+        # Restrict with userFilter / groupFilter if the tenant grows large.
+        user:
+          filter: accountEnabled eq true
+        group:
+          filter: >
+            securityEnabled eq true
+        schedule:
+          frequency: { minutes: 30 }
+          timeout: { minutes: 5 }

@@ -27,6 +27,7 @@
     "@backstage/plugin-auth-node": "^0.7.3",
     "@backstage/plugin-catalog-backend": "^3.8.1",
     "@backstage/plugin-catalog-backend-module-logs": "^0.1.24",
+    "@backstage/plugin-catalog-backend-module-msgraph": "^0.10.4",
     "@backstage/plugin-catalog-backend-module-scaffolder-entity-model": "^0.2.22",
     "@backstage/plugin-kubernetes-backend": "^0.21.6",
     "@backstage/plugin-mcp-actions-backend": "^0.2.0",
