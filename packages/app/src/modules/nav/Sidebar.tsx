@@ -62,7 +62,7 @@ export const SidebarContent = NavContentBlueprint.make({
           <SidebarGroup label="Menu" icon={<MenuIcon />}>
             {nav.take('page:catalog')}
             {nav.take('page:scaffolder')}
-            <SidebarItem icon={PeopleIcon} to="/catalog?filters[kind]=user" text="People" />
+            <SidebarItem icon={PeopleIcon} to="/?filters[kind]=user&filters[user]=all" text="People" />
             <SidebarDivider />
             <SidebarScrollWrapper>
               {nav.rest({ sortBy: 'title' })}

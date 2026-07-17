@@ -20,10 +20,9 @@ using the [new frontend & backend system](https://backstage.io/docs/frontend-sys
 
 ## Repository layout
 
-```
 backstage/
-├── app-config.yaml              # Base confi; used for LOCAL development ([guest auth](./app-config.yaml:#84), [in-memory DB](./app-config.yaml:#40))
-├── app-config.production.yaml   # Production overrides; [real DB (Postgres)](./app-config.production.yaml:#7), [oauth2-proxy auth](./app-config.production.yaml:#15), [msgraph sync](./app-config.production.yaml:#39)
+├── app-config.yaml              # Base confib; used for LOCAL development guest auth, in-memory DB
+├── app-config.production.yaml   # Production overrides; real DB (Postgres), oauth2-proxy auth, msgraph sync
 ├── catalog/
 │   └── org.yaml                 # Static catalog entities (users/groups come from Entra sync this customization)
 ├── examples/                    # Sample entities & a demo scaffolder template
@@ -40,7 +39,7 @@ backstage/
 │       ├── src/index.ts         # Backend entry: registers all backend plugins
 │       └── Dockerfile           # Image built & pushed to ghcr.io/rezakaramad/backstage
 └── package.json                 # Yarn 4 workspaces root
-```
+
 
 **Rule of thumb:**
 
